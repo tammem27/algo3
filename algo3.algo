@@ -1,0 +1,64 @@
+PROCEDURE dot_product(v1,v2 : ARRAY_OF INTEGER,VAR p:INTEGER)
+VAR
+    i,n,m:INTEGER;
+BEGIN
+    p:=0;
+    n:= v1.length-1;
+    m:= v2.length-1;
+    IF (n <> m) THEN
+        Write("error different length")
+        RETURN p := None;
+    END_IF
+    FOR i FROM 0 TO n STEP 1  DO
+        p:=p+v1[i]*v2[i]
+    END_FOR
+END
+ALGORITHM orth_vector
+VAR
+    vectors : ARRAY_OF ARRAY;
+    p,i,j,n:INTEGER;
+BEGIN
+    n:=vectors.length-1;
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM i+1 TO n STEP 1  DO
+            dot_product(vectors[i],vectors[j],p)
+            IF (p = 0) THEN
+                Write(vectors[i],"and",vectors[j]," orthogonal")
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER) : INTEGER
+VAR
+    i,n,p,m:INTEGER;
+BEGIN
+    n:=v1.length-1;
+    m:=v2.length-1;
+    p:=0;
+    IF (n <> m) THEN
+        (n <> m) THEN
+        Write("error different length")
+        RETURN p := none;
+    END_IF
+    FOR i FROM 0 TO n STEP 1  DO
+        p:=p+v1[i]*v2[i]
+    END_FOR
+    RETURN p ;
+END
+
+ALGORITHM orth_vector
+VAR
+    vectors : ARRAY_OF ARRAY;
+    p,i,j,n:INTEGER;
+BEGIN
+    n:=vectors.length-1;
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        FOR j FROM i+1 TO n STEP 1  DO
+            p := dot_product(vectors[i],vectors[j])
+            IF (p = 0) THEN
+                Write(vectors[i],"and",vectors[j]," orthogonal")
+            END_IF
+        END_FOR
+    END_FOR
+END
